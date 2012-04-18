@@ -1,0 +1,21 @@
+-------------------------------------------------
+Status of <%= @db_stat["ns"] %>
+-------------------------------------------------
+TotalStatus:
+  count: <%= @db_stat["count"] %>
+	size: <%= @db_stat["size"] / 1024 / 1024 %> MBytes
+	storageSize: <%= @db_stat["storageSize"] / 1024 / 1024  %> MBytes
+	totalIndexSize: <%= @db_stat["totalIndexSize"] / 1024 / 1024  %> MBytes
+  avgObjSize:  <%= @db_stat["avgObjSize"] %> Bytes
+  sharded: <%= @db_stat["sharded"] %>
+
+% if @db_stat["sharded"] then
+ShardMemberStatus:
+% @db_stat["shards"].each do |x, y|
+  Shard: <%= x %>
+    count: <%= y["count"] %>
+    size: <%= y["size"] / 1024 / 1024 %> MBytes
+    storageSize: <%= y["storageSize"] / 1024 / 1024  %> MBytes
+    totalIndexSize: <%= y["totalIndexSize"] / 1024 / 1024  %> MBytes
+% end
+% end
