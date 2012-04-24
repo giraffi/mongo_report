@@ -21,7 +21,6 @@ task "repo" do
   @db_stat = JSON.parse(col_stat)
   report = ERB.new(erb_tpl, nil, "%").result
 
-  report << `mongo #{db} --quiet --eval 'configDB = db.getSisterDB("config");configDB.collections.find({_id:new RegExp("^" + "#{db}" + "\\.")}).sort({_id:1}).forEach(function (coll) {print( coll._id + " chunks:");res = configDB.chunks.group({cond:{ns:coll._id}, key:{shard:1}, reduce:function (doc, out) {out.nChunks++;}, initial:{nChunks:0}});var totalChunks = 0;res.forEach(function (z) {totalChunks += z.nChunks;print("\t" + z.shard + "\t" + z.nChunks);})})'`
   puts report
 
 end
