@@ -1,10 +1,11 @@
 # Usage
 
     rake repo db_name=giraffi_staging col_name=external_data
+    rake chanks db_name=giraffi_staging
 
-# output
-## rake repo db_name=giraffi_staging col_name=external_data
-    -------------------------------------------------
+# Output
+## repo
+    ------------------------------------------------
     Status of giraffi_staging.external_data
     -------------------------------------------------
     TotalStatus:
@@ -32,8 +33,7 @@
         storageSize: 259 MBytes
         totalIndexSize: 24 MBytes
 
-## rake chanks db_name=giraffi_staging
-
+## chanks
     ----------------------------------------------------
     giraffi_staging chanks count.
     ----------------------------------------------------
